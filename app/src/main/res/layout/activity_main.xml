@@ -1,55 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-    <TextView
-        android:id="@+id/hello_text"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="Hello World!"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
-    <Button
-        android:onClick="onClick"
-        android:id="@+id/hello_Diab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/hello_text"
-        android:text="Hello Diab"
 
-        >
-
-    </Button>
-
-    <Button
-        android:onClick="onClick"
-        android:id="@+id/Button_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/hello_Diab"
-        android:text="Button 3"
-
-        >
-
-    </Button>
-
-    <EditText
-        android:id="@+id/Edit_Text"
-        android:layout_height="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/screen2"
         android:layout_width="match_parent"
-        app:layout_constraintTop_toBottomOf="@id/hello_Diab"
-        android:inputType="text"/>
+        android:layout_height="650dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewData"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="5dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <EditText
+            android:id="@+id/input_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:inputType="text"
+            app:layout_constraintBottom_toTopOf="@id/RecyclerViewButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/RecyclerViewButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="16dp"
+            android:text="Recycler View Button"
+            app:layout_constraintBottom_toBottomOf="@id/screen2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"></Button>
+
+        <ImageButton
+
+            android:id="@+id/kiwiButton"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="40dp"
+            android:src="@drawable/kiwi"
+            app:layout_constraintBottom_toTopOf="@id/input_text"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageButton
+            android:id="@+id/bananaButton"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="40dp"
+            android:src="@drawable/banana"
+            app:layout_constraintBottom_toTopOf="@id/input_text"
+            app:layout_constraintStart_toEndOf="@+id/kiwiButton"
+             />
+
+        <ImageButton
+
+            android:id="@+id/appleButton"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="40dp"
+            android:src="@drawable/apple"
+            app:layout_constraintBottom_toTopOf="@id/input_text"
+            app:layout_constraintStart_toEndOf="@id/bananaButton" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
