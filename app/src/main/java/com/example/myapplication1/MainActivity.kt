@@ -54,8 +54,11 @@ class MainActivity : AppCompatActivity() {
              val adapter = FruitsAdapter(fruitsList)
              recyclerView.adapter = adapter
          }
+    }
 
-
+    private fun displayFruitDetailsFragment(){
+        val fruitFragment = FruitFragment()
+        supportFragmentManager.beginTransaction().add(R.id.fragment_container_view,fruitFragment).commit()
     }
 
 

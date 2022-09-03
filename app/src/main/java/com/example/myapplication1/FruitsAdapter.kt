@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 
-class FruitsAdapter(private val dataList: List<Fruit>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class FruitsAdapter(private val dataList: List<Fruit>,val onFruitClick:()->Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     class viewHolder(val fruitView: View) : RecyclerView.ViewHolder(fruitView){
         val textView : TextView
@@ -19,7 +19,6 @@ class FruitsAdapter(private val dataList: List<Fruit>) : RecyclerView.Adapter<Re
         }
 
     }
-
 
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
