@@ -2,64 +2,95 @@ package com.example.myapplication1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 
 import android.widget.*
+import androidx.core.text.set
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        setButtonClickListener()
+        createFruitsRecyclerView()
     }
 
     private fun setButtonClickListener() {
-        val button = findViewById<Button>(R.id.RecyclerViewButton)
+        val button = findViewById<Button>(R.id.add_button)
         button.setOnClickListener {
-            addAnItem()
+
         }
     }
-
     var fruitsList = mutableListOf<Fruit>()
-
 
     private fun createFruitsRecyclerView() {
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewData)
         val adapter = FruitsAdapter(fruitsList)
         recyclerView.adapter = adapter
+        chooseFruitNameAndImage()
     }
 
-     private fun addAnItem(){
+     private fun chooseFruitNameAndImage(){
          val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewData)
+         val adapter = FruitsAdapter(fruitsList)
+         recyclerView.adapter = adapter
 
-         val editText = findViewById<EditText>(R.id.input_text).text
+
+         var editText = findViewById<EditText>(R.id.input_text).text
          val imageView = findViewById<ImageView>(R.id.image_view)
-
-         val appleButton = findViewById<ImageButton>(R.id.appleButton).setOnClickListener{
-             fruitsList.add(Fruit(editText.toString(),R.drawable.apple))
-             val adapter = FruitsAdapter(fruitsList)
-             recyclerView.adapter = adapter
-         }
+         val addButton = findViewById<Button>(R.id.add_button)
 
 
-         val bananaButton = findViewById<ImageButton>(R.id.bananaButton).setOnClickListener {
-             fruitsList.add(Fruit(editText.toString(),R.drawable.banana))
-             val adapter = FruitsAdapter(fruitsList)
-             recyclerView.adapter = adapter}
+         val appleButton = findViewById<ImageView>(R.id.appleButton)
+         val bananaButton = findViewById<ImageView>(R.id.bananaButton)
+         val kiwiButton = findViewById<ImageView>(R.id.kiwiButton)
 
 
-         val kiwiButton = findViewById<ImageButton>(R.id.kiwiButton).setOnClickListener {
+
+
+
+
+         appleButton.setOnClickListener {
+             editText = findViewById<EditText>(R.id.input_text).text
+                fruitsList.add(Fruit(editText.toString(),R.drawable.apple))
+
+
+
+            }
+            bananaButton.setOnClickListener {
+                editText = findViewById<EditText>(R.id.input_text).text
+                fruitsList.add(Fruit(editText.toString(),R.drawable.banana))
+
+
+            }
+         kiwiButton.setOnClickListener {
+
+             editText = findViewById<EditText>(R.id.input_text).text
              fruitsList.add(Fruit(editText.toString(),R.drawable.kiwi))
-             val adapter = FruitsAdapter(fruitsList)
-             recyclerView.adapter = adapter
+
+
+
          }
+
+
+         addButton.setOnClickListener {
+             editText.clear()
+             adapter.notifyDataSetChanged()
+
+             Log.d("TAG", "chooseFruitNameAndImage: $fruitsList")
+         }
+
+
+
+
+
+
+
+
+
     }
 
-    private fun displayFruitDetailsFragment(){
-        val fruitFragment = FruitFragment()
-        supportFragmentManager.beginTransaction().add(R.id.fragment_container_view,fruitFragment).commit()
-    }
+
 
 
 

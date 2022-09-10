@@ -8,11 +8,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 
-class FruitsAdapter(private val dataList: List<Fruit>,val onFruitClick:()->Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class FruitsAdapter(private val dataList: List<Fruit>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     class viewHolder(val fruitView: View) : RecyclerView.ViewHolder(fruitView){
+
         val textView : TextView
         val imgView : ImageView
+
         init {
             textView = fruitView.findViewById(R.id.text_view)
             imgView = fruitView.findViewById(R.id.image_view)
@@ -32,7 +34,7 @@ class FruitsAdapter(private val dataList: List<Fruit>,val onFruitClick:()->Unit)
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         holder.itemView.findViewById<TextView>(R.id.text_view).text = dataList[position].name
-        holder.itemView.findViewById<ImageView>(R.id.image_view).setImageResource(dataList[position].imageres)
+        holder.itemView.findViewById<ImageView>(R.id.image_view).setImageResource(dataList[position].imagers)
     }
 
 
