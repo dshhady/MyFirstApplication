@@ -15,9 +15,10 @@ class MainActivity : AppCompatActivity() {
         createFruitsRecyclerView()
     }
 
-    private fun setButtonClickListener() {
-        val button = findViewById<Button>(R.id.add_button)
-        button.setOnClickListener {
+    private fun setDeleteButtonClickListener() {
+        val deleteButton = findViewById<ImageView>(R.id.delete_button)
+        deleteButton.setOnClickListener {
+
 
         }
     }
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
          var editText = findViewById<EditText>(R.id.input_text).text
          val imageView = findViewById<ImageView>(R.id.image_view)
          val addButton = findViewById<Button>(R.id.add_button)
+         val deleteButton = findViewById<ImageView>(R.id.delete_button)
 
 
          val appleButton = findViewById<ImageView>(R.id.appleButton)
@@ -46,30 +48,18 @@ class MainActivity : AppCompatActivity() {
          val kiwiButton = findViewById<ImageView>(R.id.kiwiButton)
 
 
-
-
-
-
          appleButton.setOnClickListener {
              editText = findViewById<EditText>(R.id.input_text).text
                 fruitsList.add(Fruit(editText.toString(),R.drawable.apple))
-
-
 
             }
             bananaButton.setOnClickListener {
                 editText = findViewById<EditText>(R.id.input_text).text
                 fruitsList.add(Fruit(editText.toString(),R.drawable.banana))
-
-
             }
          kiwiButton.setOnClickListener {
-
              editText = findViewById<EditText>(R.id.input_text).text
              fruitsList.add(Fruit(editText.toString(),R.drawable.kiwi))
-
-
-
          }
 
 
@@ -81,19 +71,7 @@ class MainActivity : AppCompatActivity() {
          }
 
 
-
-
-
-
-
-
-
-    }
-
-
-
-
-
+     }
 
 
 
