@@ -1,6 +1,8 @@
 package com.example.myapplication1
 
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.ScrollCaptureCallback
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -8,7 +10,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 
-class FruitsAdapter(private val dataList: List<Fruit>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class FruitsAdapter(
+    private val dataList: List<Fruit>,
+    val onFruitClickFragment:(Fruit)-> Unit
+
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var mDataList:MutableList<Fruit> = dataList as MutableList<Fruit>
 
@@ -38,6 +44,13 @@ class FruitsAdapter(private val dataList: List<Fruit>) : RecyclerView.Adapter<Re
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         holder.itemView.findViewById<TextView>(R.id.text_view).text = mDataList[position].name
+        holder.itemView.setOnClickListener {
+            onFruitClickFragment(mDataList[position])
+        }
+
+
+
+
         holder.itemView.findViewById<ImageView>(R.id.image_view).setImageResource(mDataList[position].imagers)
         holder.itemView.findViewById<ImageView>(R.id.delete_button).setOnClickListener {
             mDataList.removeAt(position)

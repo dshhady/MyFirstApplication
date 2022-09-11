@@ -4,6 +4,16 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#7A21DCC7"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        >
     <TextView
         android:id="@+id/fruit_fragment_title"
         android:layout_width="wrap_content"
@@ -11,20 +21,42 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="30dp"
+        android:layout_margin="10dp"
         android:text="Title">
     </TextView>
 
     <ImageView
-        android:id="@+id/fruit__fragment_image_view"
-        android:layout_width="60dp"
+        android:id="@+id/fruit_fragment_image_view"
+        android:layout_width="70dp"
         android:layout_height="60dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fruit_fragment_title"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/banana">
     </ImageView>
+    <TextView
+        android:id="@+id/fruit_price_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/fruit_fragment_image_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        android:text="Price">
+    </TextView>
+
+        <ImageView
+            android:clickable="true"
+            android:background="@drawable/exit"
+            android:id="@+id/remove_button"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+        </ImageView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

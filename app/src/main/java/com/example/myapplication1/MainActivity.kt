@@ -5,47 +5,58 @@ import android.os.Bundle
 import android.util.Log
 
 import android.widget.*
-import androidx.core.text.set
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         createFruitsRecyclerView()
+
+
+
     }
 
-    private fun setDeleteButtonClickListener() {
-        val deleteButton = findViewById<ImageView>(R.id.delete_button)
-        deleteButton.setOnClickListener {
-
-
-        }
-    }
     var fruitsList = mutableListOf<Fruit>()
 
-    private fun createFruitsRecyclerView() {
+   private fun createFruitsRecyclerView() {
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewData)
-        val adapter = FruitsAdapter(fruitsList)
+        val adapter = FruitsAdapter(fruitsList){
+            displayFruitDetailsFragment(it)
+
+        }
         recyclerView.adapter = adapter
         chooseFruitNameAndImage()
     }
 
      private fun chooseFruitNameAndImage(){
          val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewData)
-         val adapter = FruitsAdapter(fruitsList)
+         val adapter = FruitsAdapter(fruitsList){
+             displayFruitDetailsFragment(it)
+         }
+
          recyclerView.adapter = adapter
 
 
          var editText = findViewById<EditText>(R.id.input_text).text
-         val imageView = findViewById<ImageView>(R.id.image_view)
          val addButton = findViewById<Button>(R.id.add_button)
-         val deleteButton = findViewById<ImageView>(R.id.delete_button)
+
 
 
          val appleButton = findViewById<ImageView>(R.id.appleButton)
          val bananaButton = findViewById<ImageView>(R.id.bananaButton)
          val kiwiButton = findViewById<ImageView>(R.id.kiwiButton)
+
+         val fruitFragment = FruitFragment()
+
+
+
+
+
+
 
 
          appleButton.setOnClickListener {
@@ -71,7 +82,22 @@ class MainActivity : AppCompatActivity() {
          }
 
 
+
      }
+
+
+         fun displayFruitDetailsFragment(fruit: Fruit) {
+            val fruitFragment = FruitFragment()
+            val fruitBundle = bundleOf("name" to fruit.name,"img" to fruit.imagers)
+
+            fruitFragment.arguments = fruitBundle
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container_view,fruitFragment)
+                .commit()
+
+    }
+
+
 
 
 
