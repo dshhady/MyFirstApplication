@@ -4,15 +4,16 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+        android:layout_width="300dp"
+        android:layout_height="400dp"
         android:background="#7A21DCC7"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-
         >
     <TextView
         android:id="@+id/fruit_fragment_title"
@@ -26,6 +27,7 @@
     </TextView>
 
     <ImageView
+
         android:id="@+id/fruit_fragment_image_view"
         android:layout_width="70dp"
         android:layout_height="60dp"
@@ -47,6 +49,7 @@
     </TextView>
 
         <ImageView
+
             android:clickable="true"
             android:background="@drawable/exit"
             android:id="@+id/remove_button"
@@ -56,6 +59,18 @@
             app:layout_constraintTop_toTopOf="parent"
             >
         </ImageView>
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/child_fragment_container_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            >
+        </androidx.fragment.app.FragmentContainerView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

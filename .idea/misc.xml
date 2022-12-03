@@ -7,7 +7,8 @@
         <entry key="..\:/Users/RobotiC/AndroidStudioProjects/MyApplication1/app/src/main/res/layout/Item_layout.xml" value="0.18697916666666667" />
         <entry key="..\:/Users/RobotiC/AndroidStudioProjects/MyApplication1/app/src/main/res/layout/activity_main.xml" value="0.12222222222222222" />
         <entry key="..\:/Users/RobotiC/AndroidStudioProjects/MyApplication1/app/src/main/res/layout/activity_main2.xml" value="0.35260416666666666" />
-        <entry key="..\:/Users/RobotiC/AndroidStudioProjects/MyApplication1/app/src/main/res/layout/fruit_fragment.xml" value="0.33" />
+        <entry key="..\:/Users/RobotiC/AndroidStudioProjects/MyApplication1/app/src/main/res/layout/fruit_child_fragment.xml" value="0.67" />
+        <entry key="..\:/Users/RobotiC/AndroidStudioProjects/MyApplication1/app/src/main/res/layout/fruit_fragment.xml" value="0.5" />
         <entry key="..\:/Users/RobotiC/AndroidStudioProjects/MyApplication1/app/src/main/res/layout/item_layout.xml" value="0.25" />
         <entry key="..\:/Users/RobotiC/AndroidStudioProjects/MyApplication1/app/src/main/res/layout/row_item_layout.xml" value="0.33" />
       </map>
