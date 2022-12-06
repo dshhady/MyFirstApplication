@@ -1,33 +1,34 @@
 package com.example.myapplication1
 
-import android.app.Application
 import android.content.Context
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import java.security.AlgorithmParameterGenerator.getInstance
-import java.util.Calendar.getInstance
 
 
 class FruitsAdapter(
     private val context: Context,
-    private val dataList: ArrayList<Any>,
+    private val dataList: ArrayList<Fruit>,
+    val onFruitImgClick:(Fruit)-> Unit,
     val onFruitClickFragment:(Fruit)-> Unit
 
 
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+) : RecyclerView.Adapter<FruitsAdapter.ViewHolder>() {
 
     private var mDataList:MutableList<Fruit> = dataList as MutableList<Fruit>
 
 
 
 
-    class viewHolder(val fruitView: View) : RecyclerView.ViewHolder(fruitView){
+    class ViewHolder(fruitView: View) : RecyclerView.ViewHolder(fruitView){
 
         val textView : TextView
         val imgView : ImageView
@@ -42,45 +43,59 @@ class FruitsAdapter(
     }
 
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.row_item_layout, parent, false)
-            return viewHolder(view)
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+         val view: View =
+             LayoutInflater.from(parent.context).inflate(R.layout.row_item_layout, parent, false)
+            return ViewHolder(view)
         }
 
         override fun getItemCount(): Int {
             return mDataList.size
         }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        holder.itemView.findViewById<TextView>(R.id.text_view).text = mDataList[position].name
-        holder.itemView.setOnClickListener {
-            onFruitClickFragment(mDataList[position])
 
+
+    override fun onBindViewHolder(holder:ViewHolder, position: Int) {
+        val fruit = mDataList[position]
+        holder.textView.text = fruit.name
+
+        if (fruit.imageUri != null) {
+            holder.imgView.setImageURI(Uri.parse(fruit.imageUri))
+        }
+        else {
+            holder.imgView.setImageResource(R.drawable.camera_icon)
         }
 
-        holder.itemView.findViewById<ImageView>(R.id.image_view).setImageResource(mDataList[position].imagers)
-        holder.itemView.findViewById<ImageView>(R.id.delete_button).setOnClickListener {
+
+
+
+
+
+        holder.imgView.setOnClickListener {
+            onFruitImgClick(fruit)
+        }
+
+
+        holder.textView.setOnClickListener {
+            onFruitClickFragment(fruit)
+        }
+        holder.deleteButton.setOnClickListener {
             GlobalScope.launch {
-                Repository.getInstance(context).deleteFruit(mDataList[position])
+                Repository.getInstance(context).deleteFruit(fruit)
             }
             notifyItemRemoved(position)
 
 
 
 
-
         }
-        }
+    }
 
     fun heyAdapterPleaseUpdateTheView(fruitsList: List<Fruit>){
         mDataList.clear()
         mDataList.addAll(fruitsList)
         notifyDataSetChanged()
     }
-
-
-
-
 
 
 
