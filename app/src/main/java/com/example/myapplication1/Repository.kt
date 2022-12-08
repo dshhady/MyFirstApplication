@@ -2,8 +2,6 @@ package com.example.myapplication1
 
 
 import android.content.Context
-import android.net.Uri
-import android.provider.ContactsContract.CommonDataKinds.Note
 
 import androidx.lifecycle.LiveData
 
@@ -33,13 +31,14 @@ class Repository private constructor(context: Context) {
         dao.deleteFruit(fruit)
     }
 
-    fun updateFruitImageUri(fruit:Fruit,uri:Uri) {
-        dao.updateFruitImageUri(fruit ,uri)
+    fun updateFruitImageUri(fruit:Fruit, imagePath: String, imageType: IMAGE_TYPE) {
+        dao.updateFruitImageUri(fruit , imagePath ,imageType)
     }
 
     fun getAllFruits(): LiveData<List<Fruit>> {
         // get all fruits from database
         return dao.getAllFruits()
     }
+
 
 }

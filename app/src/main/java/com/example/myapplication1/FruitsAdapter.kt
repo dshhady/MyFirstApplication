@@ -1,5 +1,6 @@
 package com.example.myapplication1
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.net.Uri
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.bumptech.glide.Glide
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -43,6 +45,7 @@ class FruitsAdapter(
     }
 
 
+
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
          val view: View =
              LayoutInflater.from(parent.context).inflate(R.layout.row_item_layout, parent, false)
@@ -59,9 +62,15 @@ class FruitsAdapter(
         val fruit = mDataList[position]
         holder.textView.text = fruit.name
 
-        if (fruit.imageUri != null) {
-            holder.imgView.setImageURI(Uri.parse(fruit.imageUri))
-        }
+        if (fruit.imagePath != null)
+            if (fruit.imagePath != "") {
+                if (fruit.imageType == IMAGE_TYPE.URI)
+                    holder.imgView.setImageURI(Uri.parse(fruit.imagePath))
+                else if (fruit.imageType == IMAGE_TYPE.URL) {
+                    Glide.with(context).load(fruit.imagePath).into(holder.imgView)
+
+                }
+            }
         else {
             holder.imgView.setImageResource(R.drawable.camera_icon)
         }

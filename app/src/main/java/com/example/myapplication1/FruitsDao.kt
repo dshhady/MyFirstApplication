@@ -23,8 +23,10 @@ interface FruitsDao {
         @Update
         fun updateFruit(fruit: Fruit)
 
-        fun updateFruitImageUri(fruit: Fruit, uri: Uri){
-                fruit.imageUri = uri.toString()
+        fun updateFruitImageUri(fruit: Fruit, imagePath: String, imageType: IMAGE_TYPE) {
+
+                fruit.imagePath = imagePath
+                fruit.imageType = imageType
                 updateFruit(fruit)
         }
 
