@@ -1,7 +1,6 @@
-package com.example.myapplication1
+package com.example.myapplication1.model
 
 
-import android.text.Editable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -17,7 +16,8 @@ data class Fruit(
     @ColumnInfo(name = "amount") var amount:String = "0",
     @ColumnInfo(name = "comments") var comments: String = "",
     @ColumnInfo(name = "image_path") var imagePath: String? = null,
-    @ColumnInfo(name = "image_type") var imageType: IMAGE_TYPE? = null
+    @ColumnInfo(name = "image_type") var imageType: IMAGE_TYPE? = null,
+    @ColumnInfo(name = "time_stamp") var timeStamp: Long = System.currentTimeMillis(),
                  ){
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0

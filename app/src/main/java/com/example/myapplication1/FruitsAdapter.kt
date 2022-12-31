@@ -1,6 +1,5 @@
 package com.example.myapplication1
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.net.Uri
 import android.view.LayoutInflater
@@ -9,8 +8,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
+import com.example.myapplication1.model.Fruit
+import com.example.myapplication1.model.IMAGE_TYPE
+import com.example.myapplication1.model.Repository
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -70,6 +71,8 @@ class FruitsAdapter(
                     Glide.with(context).load(fruit.imagePath).into(holder.imgView)
 
                 }
+                else if (fruit.imageType == IMAGE_TYPE.NONE)
+                    holder.imgView.setImageResource(R.drawable.camera_icon)
             }
         else {
             holder.imgView.setImageResource(R.drawable.camera_icon)

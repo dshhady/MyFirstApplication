@@ -1,12 +1,12 @@
-package com.example.myapplication1
+package com.example.myapplication1.ui
 
-import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import com.example.myapplication1.R
 
 class FruitChildFragment : Fragment(R.layout.fruit_child_fragment) {
 

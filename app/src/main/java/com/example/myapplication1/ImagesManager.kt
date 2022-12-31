@@ -7,6 +7,10 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication1.model.ApiResponseHitsList
+import com.example.myapplication1.model.Fruit
+import com.example.myapplication1.model.IMAGE_TYPE
+import com.example.myapplication1.model.Repository
 import retrofit2.Call
 import retrofit2.Response
 import kotlin.concurrent.thread
@@ -22,21 +26,21 @@ object ImagesManager {
         getContent.launch(intent)
     }
 
-    fun onImageResultFromGallery(result: ActivityResult, chosenFruit: Fruit,context: Context) {
+    fun onImageResultFromGallery(result: ActivityResult, chosenFruit: Fruit, context: Context) {
         if (result.resultCode == AppCompatActivity.RESULT_OK) {
             val uri = result.data?.data
             if (uri != null) {
                 context.contentResolver.takePersistableUriPermission(
                     uri,
                     Intent.FLAG_GRANT_READ_URI_PERMISSION)
-                addImageToFruit(chosenFruit, uri.toString(),IMAGE_TYPE.URI, context)
+                addImageToFruit(chosenFruit, uri.toString(), IMAGE_TYPE.URI, context)
 
             }
         }
 
     }
 
-    private fun addImageToFruit(fruit: Fruit,imagePath: String, imageType: IMAGE_TYPE, context: Context) {
+    private fun addImageToFruit(fruit: Fruit, imagePath: String, imageType: IMAGE_TYPE, context: Context) {
         thread(start = true) {
             Repository.getInstance(context).updateFruitImageUri(fruit!!, imagePath , imageType )
 

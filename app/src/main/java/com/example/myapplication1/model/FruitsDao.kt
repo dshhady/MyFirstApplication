@@ -1,7 +1,6 @@
-package com.example.myapplication1
+package com.example.myapplication1.model
 
-import android.net.Uri
-import android.provider.ContactsContract.CommonDataKinds.Note
+
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
